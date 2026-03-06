@@ -2,6 +2,25 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
+function TabFlagImage({
+  flagCode,
+  label,
+}: { flagCode: string; label: string }) {
+  const [error, setError] = useState(false);
+  if (error) {
+    return null;
+  }
+  return (
+    <img
+      src={`https://flagcdn.com/w40/${flagCode}.png`}
+      alt={`${label} flag`}
+      className="w-6 h-4 object-cover rounded-sm border border-current/10"
+      loading="lazy"
+      onError={() => setError(true)}
+    />
+  );
+}
+
 interface University {
   name: string;
   domain: string;
@@ -217,20 +236,35 @@ const tabs = [
     key: "australia",
     label: "Australia",
     flag: "🇦🇺",
+    flagCode: "au",
     universities: australiaUniversities,
   },
   {
     key: "canada",
     label: "Canada",
     flag: "🇨🇦",
+    flagCode: "ca",
     universities: canadaUniversities,
   },
-  { key: "usa", label: "USA", flag: "🇺🇸", universities: usaUniversities },
-  { key: "uk", label: "UK", flag: "🇬🇧", universities: ukUniversities },
+  {
+    key: "usa",
+    label: "USA",
+    flag: "🇺🇸",
+    flagCode: "us",
+    universities: usaUniversities,
+  },
+  {
+    key: "uk",
+    label: "UK",
+    flag: "🇬🇧",
+    flagCode: "gb",
+    universities: ukUniversities,
+  },
   {
     key: "europe",
     label: "Europe",
     flag: "🇪🇺",
+    flagCode: "de",
     universities: europeUniversities,
   },
 ];
@@ -329,7 +363,7 @@ export default function UniversitiesSection() {
                 data-ocid={`universities.tab.${i + 1}`}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-navy/15 bg-white text-navy font-grotesk font-medium text-sm data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:border-navy data-[state=active]:shadow-navy transition-all duration-200 hover:border-navy/40"
               >
-                <span>{tab.flag}</span>
+                <TabFlagImage flagCode={tab.flagCode} label={tab.label} />
                 <span>{tab.label}</span>
                 <span className="text-xs opacity-70 font-normal">
                   ({tab.universities.length})

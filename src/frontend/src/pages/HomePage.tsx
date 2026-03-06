@@ -1,7 +1,12 @@
 import { Toaster } from "@/components/ui/sonner";
+import CTABannerSection from "../components/CTABannerSection";
+import DestinationsSection from "../components/DestinationsSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
+import HowItWorksSection from "../components/HowItWorksSection";
 import Navbar from "../components/Navbar";
+import UniversityLogosStrip from "../components/UniversityLogosStrip";
+import WhyChooseUsSection from "../components/WhyChooseUsSection";
 
 export default function HomePage() {
   return (
@@ -10,6 +15,11 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
+        <WhyChooseUsSection />
+        <DestinationsSection />
+        <UniversityLogosStrip />
+        <HowItWorksSection />
+        <CTABannerSection />
       </main>
       <Footer />
     </div>

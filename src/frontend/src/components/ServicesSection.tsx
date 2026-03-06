@@ -1,10 +1,42 @@
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useState } from "react";
+
+function FlagImage({
+  flagCode,
+  country,
+}: { flagCode: string; country: string }) {
+  const [error, setError] = useState(false);
+  if (error) {
+    return (
+      <span className="text-4xl" aria-label={`${country} flag`}>
+        {flagCode === "au"
+          ? "🇦🇺"
+          : flagCode === "ca"
+            ? "🇨🇦"
+            : flagCode === "us"
+              ? "🇺🇸"
+              : flagCode === "gb"
+                ? "🇬🇧"
+                : "🇪🇺"}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={`https://flagcdn.com/w80/${flagCode}.png`}
+      alt={`${country} flag`}
+      className="w-14 h-10 object-cover rounded shadow-sm border border-navy/10"
+      loading="lazy"
+      onError={() => setError(true)}
+    />
+  );
+}
 
 const services = [
   {
-    flag: "🇦🇺",
+    flagCode: "au",
     country: "Australia",
     description:
       "Experience world-class education in Australia — a multicultural destination renowned for academic excellence and post-study work opportunities.",
@@ -20,7 +52,7 @@ const services = [
     badgeColor: "bg-red-50 text-red-700 border-red-200",
   },
   {
-    flag: "🇨🇦",
+    flagCode: "ca",
     country: "Canada",
     description:
       "Canada offers internationally recognized degrees, affordable tuition, and one of the world's most welcoming immigration pathways for international students.",
@@ -36,7 +68,7 @@ const services = [
     badgeColor: "bg-red-50 text-red-700 border-red-200",
   },
   {
-    flag: "🇺🇸",
+    flagCode: "us",
     country: "USA",
     description:
       "The United States is home to some of the world's most prestigious universities, offering unparalleled research, networking, and career opportunities.",
@@ -52,7 +84,7 @@ const services = [
     badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
   },
   {
-    flag: "🇬🇧",
+    flagCode: "gb",
     country: "United Kingdom",
     description:
       "The UK offers one of the shortest and most prestigious degrees globally — a 1-year Master's programme at world-renowned institutions.",
@@ -68,7 +100,7 @@ const services = [
     badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
   },
   {
-    flag: "🇪🇺",
+    flagCode: "de",
     country: "Europe",
     description:
       "European universities offer affordable, high-quality education with the added advantage of studying in a culturally rich, internationally connected environment.",
@@ -132,7 +164,10 @@ export default function ServicesSection() {
                 {/* Flag + country name */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-4xl">{service.flag}</span>
+                    <FlagImage
+                      flagCode={service.flagCode}
+                      country={service.country}
+                    />
                     <div>
                       <span
                         className={`inline-block text-xs font-grotesk font-semibold px-2.5 py-1 rounded-full border ${service.badgeColor} mb-1`}
