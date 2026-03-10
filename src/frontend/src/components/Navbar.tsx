@@ -37,7 +37,9 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-navy shadow-navy-lg" : "bg-navy/95 backdrop-blur-sm"
+        scrolled
+          ? "bg-navy shadow-lg shadow-black/30"
+          : "bg-navy backdrop-blur-sm"
       }`}
     >
       <div className="container-max px-4 md:px-8">
@@ -48,10 +50,10 @@ export default function Navbar() {
             data-ocid="nav.link"
             className="flex flex-col shrink-0 leading-tight group"
           >
-            <span className="font-display font-bold text-white text-xl leading-none group-hover:text-gold transition-colors duration-200">
+            <span className="font-display font-bold text-gold text-2xl leading-none group-hover:text-gold-light transition-colors duration-200 drop-shadow-sm">
               DAKSH
             </span>
-            <span className="text-gold text-xs font-grotesk tracking-widest uppercase">
+            <span className="text-white text-xs font-grotesk tracking-widest uppercase">
               International
             </span>
           </Link>
@@ -65,10 +67,10 @@ export default function Navbar() {
                   <Link
                     to={link.to}
                     data-ocid={`nav.link.${i + 1}`}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 font-grotesk tracking-wide ${
+                    className={`px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 font-grotesk tracking-wide ${
                       isActive
-                        ? "text-gold bg-white/10"
-                        : "text-white/80 hover:text-gold hover:bg-white/5"
+                        ? "text-gold bg-white/15 underline underline-offset-4"
+                        : "text-white hover:text-gold hover:bg-white/10"
                     }`}
                   >
                     {link.label}
@@ -83,7 +85,7 @@ export default function Navbar() {
             <Button
               data-ocid="nav.primary_button"
               onClick={() => navigate({ to: "/contact" })}
-              className="hidden md:flex bg-gold hover:bg-gold-light text-navy font-grotesk font-bold text-sm px-5 py-2 h-9 rounded-full shadow-gold transition-all duration-200"
+              className="hidden md:flex bg-gold hover:bg-gold-light text-navy font-grotesk font-bold text-sm px-5 py-2 h-9 rounded-full shadow-md transition-all duration-200"
             >
               Get Consultation
             </Button>
@@ -91,7 +93,7 @@ export default function Navbar() {
               type="button"
               data-ocid="nav.toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              className="md:hidden p-2 rounded-lg text-white hover:text-gold hover:bg-white/10 transition-colors"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -112,7 +114,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-navy border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-navy border-t border-gold/30 overflow-hidden"
           >
             <ul className="py-3 px-4 space-y-1">
               {navLinks.map((link, i) => {
@@ -122,10 +124,10 @@ export default function Navbar() {
                     <Link
                       to={link.to}
                       data-ocid={`nav.link.${i + 1}`}
-                      className={`block px-4 py-3 rounded-lg font-grotesk font-medium transition-all duration-200 ${
+                      className={`block px-4 py-3 rounded-lg font-grotesk font-semibold transition-all duration-200 ${
                         isActive
-                          ? "text-gold bg-white/10"
-                          : "text-white/80 hover:text-gold hover:bg-white/5"
+                          ? "text-gold bg-white/15"
+                          : "text-white hover:text-gold hover:bg-white/10"
                       }`}
                     >
                       {link.label}
@@ -137,7 +139,7 @@ export default function Navbar() {
                 <Button
                   data-ocid="nav.secondary_button"
                   onClick={() => navigate({ to: "/contact" })}
-                  className="w-full bg-gold hover:bg-gold-light text-navy font-grotesk font-bold rounded-full shadow-gold"
+                  className="w-full bg-gold hover:bg-gold-light text-navy font-grotesk font-bold rounded-full shadow-md"
                 >
                   Get Free Consultation
                 </Button>

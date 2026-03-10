@@ -96,7 +96,7 @@ export default function CTABannerSection() {
               data-ocid="cta.secondary_button"
               onClick={() => navigate({ to: "/universities" })}
               variant="outline"
-              className="border-white/25 text-white hover:bg-white/10 hover:border-gold hover:text-gold font-grotesk font-semibold text-base px-8 py-4 h-auto rounded-full transition-all duration-200 flex items-center gap-2"
+              className="border-gold text-gold hover:bg-gold hover:text-navy font-grotesk font-semibold text-base px-8 py-4 h-auto rounded-full transition-all duration-200 flex items-center gap-2"
             >
               Explore Universities
               <ArrowRight className="w-4 h-4" />
