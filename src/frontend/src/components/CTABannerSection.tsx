@@ -95,7 +95,12 @@ export default function CTABannerSection() {
             <Button
               data-ocid="cta.secondary_button"
               onClick={() => navigate({ to: "/universities" })}
-              className="bg-white text-navy border-2 border-white font-grotesk font-bold text-base px-8 py-4 h-auto rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:bg-white/90 flex items-center gap-2"
+              style={{
+                backgroundColor: "oklch(0.92 0.15 78)",
+                color: "oklch(0.17 0.06 255)",
+                borderColor: "oklch(0.92 0.15 78)",
+              }}
+              className="border-2 font-grotesk font-extrabold text-base px-8 py-4 h-auto rounded-full shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"
             >
               Explore Universities
               <ArrowRight className="w-4 h-4" />
