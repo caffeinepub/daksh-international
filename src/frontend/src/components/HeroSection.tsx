@@ -103,8 +103,7 @@ export default function HeroSection() {
           <Button
             data-ocid="hero.secondary_button"
             onClick={() => navigate({ to: "/universities" })}
-            variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 hover:border-gold hover:text-gold font-grotesk font-semibold text-base px-8 py-4 h-auto rounded-full transition-all duration-200"
+            className="bg-white hover:bg-gray-100 text-navy border-2 border-white font-grotesk font-bold text-base px-8 py-4 h-auto rounded-full transition-all duration-200 hover:scale-105 shadow-lg"
           >
             Explore Universities
           </Button>

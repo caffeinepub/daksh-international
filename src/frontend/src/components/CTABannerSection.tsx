@@ -84,23 +84,30 @@ export default function CTABannerSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
+            {/* Primary button: Navy background, gold text + gold border */}
             <Button
               data-ocid="cta.primary_button"
               onClick={() => navigate({ to: "/contact" })}
-              className="bg-gold hover:bg-gold-light text-navy font-grotesk font-bold text-base px-8 py-4 h-auto rounded-full shadow-gold-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"
+              style={{
+                backgroundColor: "oklch(var(--navy))",
+                color: "oklch(var(--gold))",
+                border: "2px solid oklch(var(--gold))",
+              }}
+              className="font-grotesk font-bold text-base px-8 py-4 h-auto rounded-full transition-all duration-200 hover:scale-105 flex items-center gap-2"
             >
               <Phone className="w-4 h-4" />
               Get Free Consultation
             </Button>
+            {/* Secondary button: White background, navy text */}
             <Button
               data-ocid="cta.secondary_button"
               onClick={() => navigate({ to: "/universities" })}
               style={{
-                backgroundColor: "oklch(0.92 0.15 78)",
-                color: "oklch(0.17 0.06 255)",
-                borderColor: "oklch(0.92 0.15 78)",
+                backgroundColor: "#ffffff",
+                color: "oklch(var(--navy))",
+                border: "2px solid #ffffff",
               }}
-              className="border-2 font-grotesk font-extrabold text-base px-8 py-4 h-auto rounded-full shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"
+              className="font-grotesk font-bold text-base px-8 py-4 h-auto rounded-full transition-all duration-200 hover:scale-105 flex items-center gap-2"
             >
               Explore Universities
               <ArrowRight className="w-4 h-4" />
